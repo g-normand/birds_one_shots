@@ -1,0 +1,8 @@
+
+
+make pip
+make serve_big_days
+
+python3 tripreports.py 338700
+
+python3 birdlife.py 14600

@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 list_info = dict()
 list_info['big_day'] = 'https://ebird.org/region/EC/bird-list?yr=BIGDAY_2024b&rank=lrec&hs_sortBy=taxon_order&hs_o=asc'
-list_info['current_year'] = 'https://ebird.org/region/EC/bird-list?yr=cur&hs_sortBy=taxon_order&hs_o=asc'
+list_info['current_year'] = 'https://ebird.org/region/EC/bird-list?hs_sortBy=taxon_order&hs_o=asc'
 
 list_birds = dict()
 
