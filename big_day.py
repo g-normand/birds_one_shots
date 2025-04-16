@@ -1,9 +1,16 @@
 import requests
+import argparse
 from bs4 import BeautifulSoup
 
+parser = argparse.ArgumentParser(description='Get bigday missing birds')
+parser.add_argument('region', type=str)
+args = parser.parse_args()
+
+region = args.region
+
 list_info = dict()
-list_info['big_day'] = 'https://ebird.org/region/EC/bird-list?yr=BIGDAY_2024b&rank=lrec&hs_sortBy=taxon_order&hs_o=asc'
-list_info['current_year'] = 'https://ebird.org/region/EC/bird-list?hs_sortBy=taxon_order&hs_o=asc'
+list_info['big_day'] = f'https://ebird.org/region/{region}/bird-list?yr=BIGDAY_2024b&rank=lrec&hs_sortBy=taxon_order&hs_o=asc'
+list_info['current_year'] = f'https://ebird.org/region/{region}/bird-list?hs_sortBy=taxon_order&hs_o=asc'
 
 list_birds = dict()
 
