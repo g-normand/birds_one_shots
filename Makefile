@@ -32,3 +32,6 @@ serve_big_day:
 compare_two_trip_reports:
 	$(VENV) && python3 compare_two_trip_reports.py $(first_url) $(second_url)
 
+compare_two_checklists:
+	$(VENV) && python3 compare_two_checklists.py $(first_url) $(second_url)
+
