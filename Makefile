@@ -27,5 +27,8 @@ clean:
 	find . -name '*.pyc' -delete
 
 serve_big_day:
-	$(VENV) && python3 big_day.py $(ARGS)
+	$(VENV) && python3 big_day.py $(region) $(year) $(in_may)
+
+compare_two_trip_reports:
+	$(VENV) && python3 compare_two_trip_reports.py $(first_url) $(second_url)
 

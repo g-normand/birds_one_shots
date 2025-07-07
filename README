@@ -1,7 +1,8 @@
 
 
 make pip
-make serve_big_days
+make serve_big_day region=EC year=2024 in_may=yes
+make compare_two_trip_reports first_url=https://ebird.org/tripreport/383909/539801 second_url=https://ebird.org/tripreport/383909/539560
 
 python3 tripreports.py 338700
 

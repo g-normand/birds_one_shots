@@ -3,14 +3,19 @@ import argparse
 from bs4 import BeautifulSoup
 
 parser = argparse.ArgumentParser(description='Get bigday missing birds')
-parser.add_argument('region', type=str)
+parser.add_argument('region', type=str, help='EC for Ecuador')
+parser.add_argument('year', type=int, help='2020 to 2024')
+parser.add_argument('in_may', type=str, help='if yes, search for may, else for october')
 args = parser.parse_args()
 
-region = args.region
 
+if args.in_may == 'yes':
+   which_bigday = 'a'
+else:
+   which_bigday = 'b'
 list_info = dict()
-list_info['big_day'] = f'https://ebird.org/region/{region}/bird-list?yr=BIGDAY_2024b&rank=lrec&hs_sortBy=taxon_order&hs_o=asc'
-list_info['current_year'] = f'https://ebird.org/region/{region}/bird-list?hs_sortBy=taxon_order&hs_o=asc'
+list_info['big_day'] = f'https://ebird.org/region/{args.region}/bird-list?yr=BIGDAY_{args.year}{which_bigday}&hs_sortBy=taxon_order&hs_o=asc'
+list_info['current_year'] = f'https://ebird.org/region/{args.region}/bird-list?hs_sortBy=taxon_order&hs_o=asc'
 
 list_birds = dict()
 
