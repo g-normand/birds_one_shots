@@ -1,7 +1,7 @@
 ### Configure paths. ###
 PROJECT_PATH := $(CURDIR)
 ENV_PATH := $(CURDIR)/one_shots_env
-PYTHON := $(ENV_PATH)/bin/python3.9
+PYTHON := $(ENV_PATH)/bin/python3.11
 TAG_NAME := DEPLOY
 TAG_DATE := $(TAG_NAME)_$(shell date -u "+%Y_%m_%d_%H_%M_%S")
 
@@ -16,7 +16,7 @@ VENV = source $(ENV_PATH)/bin/activate
 virtualenv: $(ENV_PATH)/bin/activate
 
 $(ENV_PATH)/bin/activate:
-	virtualenv -p /usr/bin/python3.9 $(ENV_PATH)
+	virtualenv -p /usr/bin/python3.11 $(ENV_PATH)
 
 ### Manage project installation. ###
 # Install python requirements.
@@ -34,4 +34,9 @@ compare_two_trip_reports:
 
 compare_two_checklists:
 	$(VENV) && python3 compare_two_checklists.py $(first_url) $(second_url)
-
+	
+inat_create_csv:
+	$(VENV) && python3 inat_create_csv.py $(year)
+	
+inat_check:
+	$(VENV) && python3 inat_check.py $(year)

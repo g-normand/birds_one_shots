@@ -35,6 +35,17 @@ common_names['grnjay'] = 'Green Jay'
 common_names['bawswa1'] = 'Blue-and-white Swallow'
 common_names['rucspa1'] = 'Rufous-collard Sparrow'
 common_names['scrcac4'] = 'Scarlet-rumped Cacique (Subtropical)'
+common_names['bawswa1'] = 'Blue-and-white Swallow'
+common_names['magtan2'] = 'Magpie Tanager'
+common_names['watgua1'] = 'Wattled Guan'
+common_names['vihhum1'] = 'Violet-headed Hummingbird'
+common_names['crcwoo1'] = 'Crimson-crested Woodpecker'
+common_names['roltyr1'] = 'White-fronted Tyrannulet'
+common_names['whcman2'] = 'White-crowned Manakin'
+common_names['whltan1'] = 'White-lined Tanager'
+common_names['cheara1'] = 'Chestnut-eared Aracari'
+
+
 
 
 def get_info_from_checklist(url):
