@@ -13,3 +13,4 @@ python3 birdlife.py 14600
 make inat_check year=2022
 make inat_check year=2023
 make inat_check year=2024
+nautilus .&

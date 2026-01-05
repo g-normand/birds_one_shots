@@ -60,17 +60,28 @@ def main():
         obs_id = str(obs["id"])
         inat_set.add(obs_id)
 
-    print(f'IN CSV, NOT IN INAT :')
+    nb_obs_csv = 0       
     for obs_id in csv_set - inat_set:
-         print(existing_ids[obs_id])
+        nb_obs_csv += 1
+        if nb_obs_csv == 1:
+            print(f'IN CSV, NOT IN INAT :')
+        print(existing_ids[obs_id])
 
-    print('_____')
-    print('Files in directory but not in the CSV : ')
+    if nb_obs_csv > 0:
+        print('_____')
+
+    nb_obs_local = 0
     for fname in os.listdir(LOCAL_FOLDER):
        if fname not in existing_names:
-           print(fname)
-    print('_____')
-       
+            nb_obs_local += 1
+            if nb_obs_local == 1:
+                print('Files in directory but not in the CSV : ')
+            print(fname)
+    
+    if nb_obs_local > 0:
+        print('_____')
+    elif nb_obs_csv == 0:
+        print('TUDO BEEEEM!')       
        
  
 if __name__ == "__main__":
