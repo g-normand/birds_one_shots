@@ -2,7 +2,14 @@ import requests
 import argparse
 import re
 import json
+import csv
 
+
+common_names = {}
+with open("species.csv", newline="", encoding="utf-8") as f:
+    reader = csv.DictReader(f, delimiter=",")
+    for row in reader:
+        common_names[row["code"]] = row["species"]
 
 parser = argparse.ArgumentParser(description='Compare two trip reports')
 parser.add_argument('first_url', type=str, help='URL of the 1st tripreport')
@@ -11,40 +18,6 @@ args = parser.parse_args()
 
 headers = dict()
 headers['X-eBirdApiToken'] = open('.ebird_key').read().strip()
-
-
-common_names = dict()
-common_names['brvear1'] = 'Brown Violetear'
-common_names['spehum1'] = 'Speckled Hummingbird'
-common_names['lotsyl1'] = 'Long-tailed Sylph'
-common_names['broinc1'] = 'Bronzy Inca'
-common_names['colinc1'] = 'Collared Inca'
-common_names['chbcor1'] = 'Chestnut-breasted Coronet'
-common_names['boorat2'] = 'Peruvian Racket-tail'
-common_names['whthil3'] = 'Green-backed Hillstar'
-common_names['fabbri1'] = 'Fawn-breasted Brilliant'
-common_names['vifbri1'] = 'Violet-fronted Brilliant'
-common_names['gorwoo2'] = 'Gorgeted Woodstar'
-common_names['ruboro1'] = 'Russet-backed Oropendola'
-common_names['scrcac1'] = 'Scarlet-rumped Cacique'
-common_names['paltan1'] = 'Palm Tanager'
-common_names['banana'] = 'Bananaquit'
-common_names['spvear1'] = 'Sparkling Violetear'
-common_names['cinfly2'] = 'Cinnamon Flycatcher'
-common_names['grnjay'] = 'Green Jay'
-common_names['bawswa1'] = 'Blue-and-white Swallow'
-common_names['rucspa1'] = 'Rufous-collard Sparrow'
-common_names['scrcac4'] = 'Scarlet-rumped Cacique (Subtropical)'
-common_names['bawswa1'] = 'Blue-and-white Swallow'
-common_names['magtan2'] = 'Magpie Tanager'
-common_names['watgua1'] = 'Wattled Guan'
-common_names['vihhum1'] = 'Violet-headed Hummingbird'
-common_names['crcwoo1'] = 'Crimson-crested Woodpecker'
-common_names['roltyr1'] = 'White-fronted Tyrannulet'
-common_names['whcman2'] = 'White-crowned Manakin'
-common_names['whltan1'] = 'White-lined Tanager'
-common_names['cheara1'] = 'Chestnut-eared Aracari'
-
 
 
 
@@ -56,8 +29,12 @@ def get_info_from_checklist(url):
     user_name = response.json()['userDisplayName']
     list_species = set()
     for species in response.json()['obs']:
-        name = common_names[species['speciesCode']] if species['speciesCode'] in common_names else \
-            species['speciesCode']
+        if species['speciesCode'] in common_names:
+            name = common_names[species['speciesCode']].split(' (')[0]
+        else:
+            #print(f"VERIFY : https://ebird.org/species/{species['speciesCode']}")
+            print(f"{species['speciesCode']},??")
+            name = species['speciesCode']
         list_species.add(name)
     return user_name, list_species
 
