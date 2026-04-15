@@ -9,7 +9,9 @@ f = open('trip_reports.html', 'w')
 
 f.write('<html>')
 f.write('<body><ul>')
-for i in range(args.start, args.start + 100):
+for i in range(args.start, args.start + 1000):
+   if i % 100 == 0:
+      f.write('_______')
    f.write(f'<li><a href="https://ebird.org/tripreport/{i}" target="#blank">{i}</a></li>')
 f.write('</ul></body')
 f.write('</html>')

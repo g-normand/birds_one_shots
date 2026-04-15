@@ -6,11 +6,12 @@ make compare_two_trip_reports first_url=https://ebird.org/tripreport/383909/5398
 
 make compare_two_checklists first_url=S291069919 second_url=S284974427
 
-python3 tripreports.py 338700
+python3 tripreports.py 469000
 
 python3 birdlife.py 14600
 
 make inat_check year=2022
 make inat_check year=2023
 make inat_check year=2024
+make inat_check year=2025
 nautilus .&

@@ -68,6 +68,10 @@ def main():
         print(existing_ids[obs_id])
 
     if nb_obs_csv > 0:
+        print('USE : ')
+        print('')
+        print(f'gedit inat_files/inat_images_{YEAR}.csv')
+        print('')
         print('_____')
 
     nb_obs_local = 0
